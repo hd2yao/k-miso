@@ -15,36 +15,45 @@ export interface LessonItem {
   endSeconds?: number
   sourceUrl?: string
   isEmbeddable?: boolean
+  lyricsArtist?: string
+  lyricsTitle?: string
+  lyricsKeyword?: string
 }
 
 export const lessonItems: LessonItem[] = [
   {
-    id: 'boy-with-luv-happiness',
-    termKo: '행복',
-    termZh: '幸福',
-    romanization: 'haengbok',
+    id: 'gangnam-style-woman',
+    termKo: '여자',
+    termZh: '女人',
+    romanization: 'yeoja',
     sourceType: 'kpop',
-    sourceTitle: 'Boy With Luv',
-    sourceContext: '用一句很轻的问句把情绪拉进歌里。',
-    sourceLineShort: '뭐가 널 행복하게 하는지?',
-    sourceEpisodeOrArtist: 'BTS',
-    youtubeVideoId: 'XsX3ATc3FbA',
-    startSeconds: 42,
-    endSeconds: 47,
-    sourceUrl: 'https://www.youtube.com/watch?v=XsX3ATc3FbA&t=42s',
+    sourceTitle: 'Gangnam Style',
+    sourceContext: '通过副歌前的叙述句记基础名词。',
+    sourceLineShort: '낮에는 따사로운 인간적인 여자',
+    sourceEpisodeOrArtist: 'PSY',
+    youtubeVideoId: '9bZkp7q19f0',
+    startSeconds: 24,
+    endSeconds: 29,
+    sourceUrl: 'https://www.youtube.com/watch?v=9bZkp7q19f0&t=24s',
     isEmbeddable: true,
+    lyricsArtist: 'PSY',
+    lyricsTitle: 'Gangnam Style',
+    lyricsKeyword: '여자',
   },
   {
-    id: 'drama-wound',
-    termKo: '상처',
-    termZh: '伤口',
-    romanization: 'sangcheo',
+    id: 'how-you-like-that-fall',
+    termKo: '무너지다',
+    termZh: '崩塌',
+    romanization: 'muneojida',
     sourceType: 'kpop',
-    sourceTitle: 'Drama',
-    sourceContext: '情绪更强烈，适合对比记忆抽象名词。',
-    sourceLineShort: '나를 더 아프게 하는 drama',
-    sourceEpisodeOrArtist: 'aespa',
-    sourceUrl: 'https://www.youtube.com/results?search_query=aespa+Drama+official+mv',
+    sourceTitle: 'How You Like That',
+    sourceContext: '在强情绪句子里记动词变形。',
+    sourceLineShort: '보란 듯이 무너졌어',
+    sourceEpisodeOrArtist: 'BLACKPINK',
+    sourceUrl: 'https://www.youtube.com/watch?v=ioNng23DkIM&t=14s',
+    lyricsArtist: 'BLACKPINK',
+    lyricsTitle: 'How You Like That',
+    lyricsKeyword: '무너졌어',
   },
   {
     id: 'goblin-fate',

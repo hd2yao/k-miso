@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AppShell } from '../components/AppShell'
@@ -7,20 +7,49 @@ import { LearningCard } from '../components/LearningCard'
 import { PrimaryButton } from '../components/PrimaryButton'
 import { SourcePreviewButton } from '../components/SourcePreviewButton'
 import { YouTubeEmbedModal } from '../components/YouTubeEmbedModal'
-import { lessonItems, type SourceType } from '../data/lessonItems'
+import { lessonItems, type LessonItem, type SourceType } from '../data/lessonItems'
+import { loadLessonItems } from '../data/lessonItemsLoader'
 import { ROUTES } from '../lib/routes'
 
 interface LearningPageProps {
   sourceType?: SourceType
+  loadItems?: () => Promise<LessonItem[]>
 }
 
-export function LearningPage({ sourceType }: LearningPageProps) {
+export function LearningPage({ sourceType, loadItems = loadLessonItems }: LearningPageProps) {
   const navigate = useNavigate()
-  const items = sourceType ? lessonItems.filter((item) => item.sourceType === sourceType) : lessonItems
+  const [allItems, setAllItems] = useState<LessonItem[]>(lessonItems)
   const [index, setIndex] = useState(0)
   const [showVideo, setShowVideo] = useState(false)
 
-  const activeItem = items[index] ?? lessonItems[0]
+  useEffect(() => {
+    let cancelled = false
+
+    void loadItems()
+      .then((loadedItems) => {
+        if (cancelled || loadedItems.length === 0) {
+          return
+        }
+
+        if (loadedItems === lessonItems) {
+          return
+        }
+
+        setAllItems(loadedItems)
+        setShowVideo(false)
+      })
+      .catch(() => {
+        // 保留本地内置词条作为回退，不中断学习流。
+      })
+
+    return () => {
+      cancelled = true
+    }
+  }, [loadItems])
+
+  const items = sourceType ? allItems.filter((item) => item.sourceType === sourceType) : allItems
+  const safeIndex = items.length > 0 ? index % items.length : 0
+  const activeItem = items[safeIndex] ?? allItems[0] ?? lessonItems[0]
 
   const nextItem = () => {
     if (items.length === 0) {
