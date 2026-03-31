@@ -241,6 +241,9 @@ blockquote {
 }
 
 .source-preview-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   min-height: 48px;
   border-radius: 20px;
@@ -248,6 +251,10 @@ blockquote {
   color: var(--color-green);
   font-size: 15px;
   font-weight: 700;
+}
+
+.source-preview-button--link {
+  text-decoration: none;
 }
 
 .splash-page {

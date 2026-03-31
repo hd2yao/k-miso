@@ -55,6 +55,15 @@ export function LearningPage({ sourceType }: LearningPageProps) {
             <SourcePreviewButton onClick={() => setShowVideo(true)}>
               查看出处
             </SourcePreviewButton>
+          ) : activeItem.sourceUrl ? (
+            <a
+              href={activeItem.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="source-preview-button source-preview-button--link"
+            >
+              在 YouTube 查看
+            </a>
           ) : null}
           <PrimaryButton onClick={nextItem}>下一个</PrimaryButton>
         </div>
