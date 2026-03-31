@@ -13,7 +13,7 @@ describe('App routes', () => {
 
     fireEvent.click(screen.getByRole('button', { name: '开始学习' }))
 
-    expect(screen.getByText('Boy With Luv')).toBeInTheDocument()
+    expect(screen.getByText('Gangnam Style')).toBeInTheDocument()
   })
 
   it('opens filtered learning content from the categories page', () => {
