@@ -1,0 +1,16 @@
+:root {
+  --color-ink: #23303f;
+  --color-ink-soft: #617082;
+  --color-paper: #f5f8fc;
+  --color-panel: rgba(255, 255, 255, 0.74);
+  --color-border: rgba(133, 153, 180, 0.18);
+  --color-green: #087934;
+  --color-green-soft: #98f09d;
+  --color-apricot: #f4cc92;
+  --color-shadow: 0 24px 60px rgba(34, 52, 81, 0.12);
+  --color-shadow-soft: 0 14px 32px rgba(34, 52, 81, 0.08);
+  --radius-phone: 34px;
+  --radius-card: 32px;
+  --radius-pill: 999px;
+  --phone-width: 430px;
+}
