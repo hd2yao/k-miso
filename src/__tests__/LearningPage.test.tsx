@@ -22,7 +22,7 @@ describe('LearningPage', () => {
     expect(screen.getByText('Boy With Luv')).toBeInTheDocument()
   })
 
-  it('shows source preview only when the item has embeddable video metadata', () => {
+  it('shows source actions based on available metadata', () => {
     render(
       <MemoryRouter>
         <LearningPage />
@@ -30,11 +30,15 @@ describe('LearningPage', () => {
     )
 
     expect(screen.getByRole('button', { name: '查看出处' })).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: '在 YouTube 查看' }),
+    ).not.toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: '下一个' }))
 
     expect(
       screen.queryByRole('button', { name: '查看出处' }),
     ).not.toBeInTheDocument()
+    expect(screen.getByRole('link', { name: '在 YouTube 查看' })).toBeInTheDocument()
   })
 })
